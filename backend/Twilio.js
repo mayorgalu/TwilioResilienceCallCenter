@@ -1,14 +1,14 @@
-const twilio = require("twilio");
-const voiceResponse = require("twilio/lib/TwiML/VoiceResponse");
+const twilio = require('twilio');
+const voiceResponse = require('twilio/lib/TwiML/VoiceResponse');
 
 class Twilio {
-  phoneNumber = "+17873302150";
-  phoneNumberSid = "PN649df5fa889324a65fa15acc94e9f621";
-  tokenSid = "SK4c48981e641f38225c14ad92dcb06094";
-  tokenSecret = "TKLV27pg7nrb66Se6CNSWGcB7dURxElL";
-  accountSid = "AC911afe8d61ae49f400a1384c1dbfc1d5";
-  verify = "VA1f4b01d7c66e32c14b51207d345855c6";
-  outgoingAppSid = "AP2f5c6a05b4bdd39c36007f61f74c59c4";
+  phoneNumber = '+17873302150';
+  phoneNumberSid = 'PN649df5fa889324a65fa15acc94e9f621';
+  tokenSid = 'SK4c48981e641f38225c14ad92dcb06094';
+  tokenSecret = 'TKLV27pg7nrb66Se6CNSWGcB7dURxElL';
+  accountSid = 'AC911afe8d61ae49f400a1384c1dbfc1d5';
+  verify = 'VA1f4b01d7c66e32c14b51207d345855c6';
+  outgoingAppSid = 'AP2f5c6a05b4bdd39c36007f61f74c59c4';
   client;
   constructor() {
     this.client = twilio(this.tokenSid, this.tokenSecret, {
@@ -26,7 +26,7 @@ class Twilio {
         to,
         channel,
       });
-    console.log("sendVerify");
+    console.log('sendVerify');
     return data;
   }
 
@@ -37,7 +37,7 @@ class Twilio {
         to,
         code,
       });
-    console.log("verifyCode");
+    console.log('verifyCode');
     return data;
   }
 
@@ -45,11 +45,11 @@ class Twilio {
     const TwiML = new VoiceResponse();
     twiml.say(
       {
-        voice: "female",
+        voice: 'female',
       },
       message
     );
-    twiml.redirect("https://resiliencyconnection.loca.lt/enqueue");
+    twiml.redirect('https://resiliencyconnection.loca.lt');
     return twiml;
   }
 
@@ -66,14 +66,14 @@ class Twilio {
   }
 
   answerCall(sid) {
-    console.log("answerCall with sid", sid); //chapter 52
+    console.log('answerCall with sid', sid);
     this.client.calls(sid).update({
-      url: "https://resiliencyconnection.loca.lt/connect-call",
-      method: "POST",
+      url: 'https://resiliencyconnection.loca.lt',
+      method: 'POST',
       function(err, call) {
-        console.log("anwserCall", call);
+        console.log('anwserCall', call);
         if (err) {
-          console.error("anwserCall", err);
+          console.error('anwserCall', err);
         }
       },
     });
@@ -88,14 +88,14 @@ class Twilio {
       outgoingApplicationSid: outgoingAppSid,
       incomingAllow: true,
     });
-    const token = new AccessToken( //chapter 49
+    const token = new AccessToken(
       this.accountSid,
       this.tokenSid,
       this.tokenSecret,
       { identity }
     );
     token.addGrant(voiceGrant);
-    console.log("Access granted with JWT", token.toJwt());
+    console.log('Access granted with JWT', token.toJwt());
     return token.toJwt();
   };
 }

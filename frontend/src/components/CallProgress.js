@@ -10,7 +10,6 @@ function CallProgress({ call }) {
     <Container>
       <Step.Group fluid>
         {' '}
-        //chapter 27
         <Step
           icon='phone'
           title='Ringing'
