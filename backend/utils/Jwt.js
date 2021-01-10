@@ -3,8 +3,8 @@ const jwt = require('jsonwebtoken');
 const SECRET_KEY = 'SOME_SECRET_STRING';
 
 function createJWT(username) {
-  const token = jwt.sign({ username }, SECRET_KEY); //this username is verified out of the token
-  return token; //chapter 19
+  const token = jwt.sign({ username }, SECRET_KEY);
+  return token;
 }
 
 function verifyToken(token) {
