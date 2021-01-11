@@ -1,5 +1,6 @@
 const twilio = require('twilio');
-const voiceResponse = require('twilio/lib/TwiML/VoiceResponse');
+const VoiceResponse = require('twilio/lib/TwiML/VoiceResponse');
+const TwiML = new VoiceResponse();
 
 class Twilio {
   phoneNumber = '+17873302150';
