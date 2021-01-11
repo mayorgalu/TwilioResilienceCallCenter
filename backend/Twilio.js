@@ -72,9 +72,9 @@ class Twilio {
       url: 'https://resiliencyconnection.loca.lt',
       method: 'POST',
       function(err, call) {
-        console.log('anwserCall', call);
+        console.log('answerCall', call);
         if (err) {
-          console.error('anwserCall', err);
+          console.error('answerCall', err);
         }
       },
     });
