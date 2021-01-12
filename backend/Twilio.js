@@ -1,6 +1,6 @@
 const twilio = require('twilio');
-const VoiceResponse = require('twilio/lib/TwiML/VoiceResponse');
-const TwiML = new VoiceResponse();
+const VoiceResponse = require('twilio/lib/twiML/VoiceResponse');
+const twiML = new VoiceResponse();
 
 class Twilio {
   phoneNumber = '+17873302150';
@@ -43,15 +43,15 @@ class Twilio {
   }
 
   voiceResponse(message) {
-    const TwiML = new VoiceResponse();
+    const twiML = new VoiceResponse();
     twiMl.say(
       {
         voice: 'female',
       },
       message
     );
-    TwiML.redirect('https://resiliencyconnection.loca.lt');
-    return TwiML;
+    twiML.redirect('https://resiliencyconnection.loca.lt');
+    return twiML;
   }
 
   enqueueCall(queueName) {
