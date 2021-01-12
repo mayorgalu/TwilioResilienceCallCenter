@@ -98,7 +98,7 @@ function App() {
       username: user.username,
     });
     console.log('received token', response.data.token);
-    setStoredToken(response.data.token);
+    setStoredToken(response.data.token); //this data is the request from axios, token comes from returning an object json web with token
   }
 
   return (
