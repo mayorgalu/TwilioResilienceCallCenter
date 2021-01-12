@@ -3,13 +3,18 @@ const twilio = require('./Twilio');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const http = require('http');
-const socketIo = require('socket.io');
 const jwt = require('./utils/Jwt');
 const { getAccessTokenForVoice } = require('./Twilio');
 const { Twilio } = require('twilio');
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server); //subscribe to events on this socket
+const io = require('socket.io')(server, {
+  cors: {
+    origin: '*',
+    methods: ['*'],
+    credentials: true,
+  },
+}); //subscribe to events on this socket
 
 io.use((socket, next) => {
   console.log('Socket middleware');
@@ -61,7 +66,7 @@ app.post('/check-token', (req, res) => {
 app.post('/login', async (req, res) => {
   console.log('logging in');
   const { to, username, channel } = req.body;
-  const data = await twilio.SendVerifyAsync(to, channel);
+  const data = await twilio.sendVerifyAsync(to, channel);
   res.send('Sent Code');
 });
 

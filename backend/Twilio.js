@@ -44,26 +44,26 @@ class Twilio {
 
   voiceResponse(message) {
     const TwiML = new VoiceResponse();
-    twiml.say(
+    twiMl.say(
       {
         voice: 'female',
       },
       message
     );
-    twiml.redirect('https://resiliencyconnection.loca.lt');
-    return twiml;
+    TwiML.redirect('https://resiliencyconnection.loca.lt');
+    return TwiML;
   }
 
   enqueueCall(queueName) {
-    const twiml = new VoiceResponse();
-    twiml.enqueue(queueName);
-    return twiml;
+    const twiML = new VoiceResponse();
+    twiML.enqueue(queueName);
+    return twiML;
   }
 
   redirectCall(client) {
-    const twiml = new VoiceResponse();
+    const twiML = new VoiceResponse();
     twiml.dial().client(client);
-    return twiml;
+    return twiML;
   }
 
   answerCall(sid) {

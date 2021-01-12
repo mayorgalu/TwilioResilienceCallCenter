@@ -13,9 +13,9 @@ function CallProgress({ call }) {
         <Step
           icon='phone'
           title='Ringing'
-          description={call.CallSid}
-          active={call.CallStatus === 'ringing'}
-          completed={call.CallStatus !== 'ringing'}
+          description={call.aid}
+          active={call.atatus === 'ringing'}
+          completed={call.atatus !== 'ringing'}
         />
         <Step
           icon='cogs'

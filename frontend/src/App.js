@@ -6,6 +6,7 @@ import socket from './utils/Socketio';
 import CallCenter from './components/CallCenter';
 import useTokenFromLocalStorage from './hooks/useTokenFromLocalStorage';
 import * as Twilio from 'twilio-client';
+import Axios from './utils/Axios';
 
 function App() {
   const [calls, setCalls] = useImmer({
@@ -51,7 +52,6 @@ function App() {
       console.log('Receive Token from the backend');
       setTwilioToken(data.token);
     });
-
     socket.client.on('enqueue', ({ data: { CallSid } }) => {
       setCalls((draft) => {
         const index = draft.calls.findIndex(
@@ -69,7 +69,7 @@ function App() {
   async function sendSmsCode() {
     console.log('Sending SMS');
     await axios.post('/login', {
-      to: user.mobileNumber,
+      to: `+${user.mobileNumber}`,
       username: user.username,
       channel: 'sms',
     });

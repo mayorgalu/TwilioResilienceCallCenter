@@ -1,6 +1,6 @@
-import React from "react";
-import CallProgress from "./CallProgress";
-import NavBar from "./NavBar";
+import React from 'react';
+import CallProgress from './CallProgress';
+import NavBar from './NavBar';
 
 function CallCenter({ calls }) {
   return (
