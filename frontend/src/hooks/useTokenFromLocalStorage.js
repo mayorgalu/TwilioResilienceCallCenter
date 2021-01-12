@@ -14,6 +14,7 @@ function useTokenFromLocalStorage(initialValue) {
   async function checkToken() {
     //this function will call the backend using Axios
     const { data } = await Axios.post('/check-token', { token: value });
+    console.log(value);
     console.log('CheckToken', data);
     setIsValid(data.isValid);
   }

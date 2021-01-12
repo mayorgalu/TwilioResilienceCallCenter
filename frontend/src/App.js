@@ -69,7 +69,7 @@ function App() {
   async function sendSmsCode() {
     console.log('Sending SMS');
     await axios.post('/login', {
-      to: `+${user.mobileNumber}`,
+      to: user.mobileNumber,
       username: user.username,
       channel: 'sms',
     });

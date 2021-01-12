@@ -54,6 +54,7 @@ app.get('/test', (req, res) => {
 
 app.post('/check-token', (req, res) => {
   const { token } = req.body;
+  console.log(token);
   let isValid = false;
   try {
     isValid = jwt.verifyToken(token);
