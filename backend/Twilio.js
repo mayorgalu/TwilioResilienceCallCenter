@@ -41,17 +41,17 @@ class Twilio {
     console.log('verifyCode');
     return data;
   }
-
+  //voiceResponse(message) { const TwiML = new VoiceResponse(); <- WRONGtwiMl.say( { voice: 'female', }, message ); TwiML.redirect('https://resiliencyconnection.loca.lt'); return TwiML; }
   voiceResponse(message) {
-    const twiML = new VoiceResponse();
-    twiMl.say(
+    const twiml = new VoiceResponse();
+    twiml.say(
       {
         voice: 'female',
       },
       message
     );
-    twiML.redirect('https://resiliencyconnection.loca.lt');
-    return twiML;
+    twiml.redirect('https://resiliencyconnection.loca.lt');
+    return twiml;
   }
 
   enqueueCall(queueName) {
