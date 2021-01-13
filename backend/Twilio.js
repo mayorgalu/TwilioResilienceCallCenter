@@ -79,7 +79,6 @@ class Twilio {
       },
     });
   }
-
   getAccessTokenForVoice = (identity) => {
     console.log(`Access token for ${identity}`);
     const AccessToken = twilio.jwt.AccessToken;
