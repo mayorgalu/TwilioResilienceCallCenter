@@ -41,7 +41,7 @@ class Twilio {
     console.log('verifyCode');
     return data;
   }
-  //voiceResponse(message) { const TwiML = new VoiceResponse(); <- WRONGtwiMl.say( { voice: 'female', }, message ); TwiML.redirect('https://resiliencyconnection.loca.lt'); return TwiML; }
+
   voiceResponse(message) {
     const twiml = new VoiceResponse();
     twiml.say(
