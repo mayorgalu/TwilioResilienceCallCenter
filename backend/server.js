@@ -32,7 +32,7 @@ io.on('connection', (socket) => {
   //when we got a connection, this socket is a direct connection to a unique page on the browser
   console.log('Socket connected', socket.id);
   socket.emit('twilio-token', {
-    token: getAccessTokenForVoice('ResiliencyConnection'),
+    token: getAccessTokenForVoice('resiliencyconnection'),
   });
   socket.on('disconnect', () => {
     console.log('Socket disconnected', socket.id);
@@ -107,7 +107,7 @@ app.post('/enqueue', (req, res) => {
 
 app.post('/connect-call', (req, res) => {
   console.log('Connecting call');
-  const response = twilio.redirectCall('ResiliencyConnection');
+  const response = twilio.redirectCall('resiliencyconnection');
   res.type('text/xml');
   res.send(response.toString());
 });
